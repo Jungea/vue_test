@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <div id="app">
+        <p>{{ foo }}</p>
+        <!-- obj.foo는 더이상 변하지 않습니다! -->
+        <button v-on:click="foo = 'baz'">Change it</button>
+    </div>
+    
+    <script>
+        // 인스턴스가 생성될 때 존재한 것들만 반응형
+        var data = {
+            newTodoText: '',
+            visitCount: 0,
+            hideCompletedTodos: false,
+            todos: [],
+            error: null
+        };
+
+
+        var vm = new Vue({
+            data: data
+        })
+
+        // console.log(vm.a === data.a);
+        // vm.a = 2;
+        // console.log(data.a);
+        // data.a = 3
+        // console.log(vm.a)
+        // vm.b = 'hi';
+
+        var obj = {
+            foo: 'bar'
+        }
+
+        Object.freeze(obj)
+
+        new Vue({
+            el: '#app',
+            data: obj
+        })
+    </script>
+
+
+</body>
+
+</html>

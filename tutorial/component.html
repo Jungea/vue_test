@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app-7">
+        <ol>
+            <!-- todo-item 컴포넌트의 인스턴스 만들기 -->
+            <todo-item v-for="item in groceryList" v-bind:todo="item" v-bind:key="item.id">
+            </todo-item>
+        </ol>
+    </div>
+
+    <script>
+        // todo-item 이름을 가진 컴포넌트를 정의합니다
+        Vue.component('todo-item', {
+            props: ['todo'],
+            template: '<li>{{ todo.text }}</li>'
+        })
+
+        var app7 = new Vue({
+            el: '#app-7',
+            data: {
+                groceryList: [{
+                        id: 0,
+                        text: 'Vegetables'
+                    },
+                    {
+                        id: 1,
+                        text: 'Chesse'
+                    },
+                    {
+                        id: 2,
+                        text: 'Whatever else humans are supposed to eat'
+                    }
+                ]
+            }
+        })
+    </script>
+
+
+</body>
+
+</html>

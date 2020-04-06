@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <div id="app">
+        <h1>Vue.js - 인스턴스 생성 & Watch</h1>
+        <h5>Count : {{ test }}</h5>
+        <button v-on:click="test+=1">Add 1</button>
+    </div>
+
+    <script>
+        // 인스턴스가 생성될 때 존재한 것들만 반응형
+        var data = {
+            test: 0
+        };
+
+
+        var vm = new Vue({
+            el: '#app',
+            data: data
+        })
+    </script>
+
+
+</body>
+
+</html>

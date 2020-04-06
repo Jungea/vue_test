@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+
+<body>
+    <div id="root">
+        <div>{{first}}곱하기 {{second}}는?</div>
+        <form v-on:submit="onSubmitForm">
+            <!-- onClick처럼 form은 submit을 사용한다. -->
+
+            <input type="number" ref="answer" v-model="value" autofocus>
+            <!-- html이었다면 <input value="value"> -->
+            <!-- 입력을 한는 것도 바뀌는 데이터이다. -->
+            <!-- input태그에 입력받는 값을 데이터에도 받고 싶을 때 -->
+
+            <!-- 데이터인지 애매한데 태그에 접근해야 할 때 ref -->
+            <!-- 뷰가 접근하는 이름 -->
+
+            <button type="submit">입력</button>
+            <div>{{value}}</div>
+
+        </form>
+        <div id="result">{{result}}</div>
+    </div>
+
+</body>
+<script>
+    const app = new Vue({
+        el: '#root',
+        data: {
+            first: Math.floor(Math.random() * 9 + 1),
+            second: Math.floor(Math.random() * 9 + 1),
+            value: '',
+            result: '',
+        },
+        methods: {
+            onSubmitForm(e) {
+                e.preventDefault();
+                // form에서 submit을 할 경우 새로고침이 된다.
+                // 싱글페이지에서 새로고침을 막기위해서
+
+                console.log(this);
+                console.log(this.first, this.second, this.value);
+                if (this.first * this.second === parseInt(this.value)) {
+                    // value가 input태그의 값을 가져와 문자열이다.
+                    // 또는 == 를 사용한다.
+
+                    this.result = '구구단 맞춰서 좋냐? 풉ㅋ';
+                    this.first = Math.floor(Math.random() * 9 + 1);
+                    this.second = Math.floor(Math.random() * 9 + 1);
+                    this.value = '';
+                    //바뀌는 데이터의 갯수만 신경
+                    // 다음 데이터만 신경 쓰면 됨
+
+                    this.$refs.answer.focus();
+
+                } else {
+                    this.result = '그것도 못 맞추냐? 풉ㅋ';
+                    this.value = '';
+                    this.$refs.answer.focus();
+                }
+            },
+        },
+    })
+</script>
+
+</html>

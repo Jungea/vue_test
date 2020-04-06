@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>좋아요</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+</head>
+
+<body>
+    <!-- 버튼 클릭시 좋아요 눌렀음으로 바뀜 -->
+    <div id="root">
+        <div v-if="liked">좋아요 눌렀음</div>
+        <!-- <div>솔로천국!!!!!!(v-if와 v-else는 형제 태그면서 '인접' 해야한다.)</div> -->
+        <button v-else v-on:click="onClickButton">Like</button>
+        <!-- 버튼에 (뷰가 통제하는)클릭 이벤트를 연결 -->
+        <!-- v속성의 값은 javascirpt를 사용할 수 있다. -->
+    </div>
+
+</body>
+<script>
+    const app = new Vue({
+        el: '#root',
+        data: {
+            liked: false, //좋아요를 눌렀는지 안눌렀는지 바뀌는 값
+        },
+        methods: {
+            onClickButton() { //버튼이 눌렸을 때 실행되야 하는 메소드
+                this.liked = true;
+            },
+        },
+    })
+</script>
+
+</html>

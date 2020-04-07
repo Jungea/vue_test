@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>메뉴 비스무리</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+</head>
+
+<body>
+    <h1>홈페이지</h1>
+    <!-- 버튼 클릭시 좋아요 눌렀음으로 바뀜 -->
+    <div id="root">
+
+        <hr />
+        <button v-on:click="onClickButton(0)">메인화면</button>
+        <button v-on:click="onClickButton(1)">서브화면1</button>
+        <button v-on:click="onClickButton(2)">서브화면2</button>
+        <button v-on:click="onClickButton(3)">서브화면3</button>
+        <button v-on:click="onClickButton(4)">서브화면4</button>
+        <hr />
+
+        <div v-if="route === 0">메인화면 내용</div>
+        <div v-else-if="route === 1">서브화면1 내용</div>
+        <div v-else-if="route === 2">서브화면2 내용</div>
+        <div v-else-if="route === 3">서브화면3 내용</div>
+        <div v-else-if="route === 4">서브화면4 내용</div>
+        
+    </div>
+
+</body>
+<script>
+    const app = new Vue({
+        el: '#root',
+        data: {
+            liked: false, //좋아요를 눌렀는지 안눌렀는지 바뀌는 값
+            route: 0,
+        },
+        methods: {
+            onClickButton(num) { //버튼이 눌렸을 때 실행되야 하는 메소드
+                app.route = num;
+            },
+        },
+    })
+</script>
+
+</html>

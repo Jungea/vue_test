@@ -14,10 +14,10 @@
 
         <div>{{word}}</div>
         <form v-on:submit="onSubmitForm">
-            <input type="text" ref="answer" v-model="value">
+            <input type="text" ref="answer" v-model="value" autofocus>
             <button type="submit">입력!</button>
         </form>
-        <div id="result">{{result}}</div>
+        <div>{{result}}</div>
     </div>
 </body>
 <script>
@@ -43,7 +43,7 @@
                     this.$refs.answer.focus();
                 }
 
-            }
+            },
         },
     })
 </script>

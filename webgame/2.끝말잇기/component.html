@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+
+<body>
+    <div id="root">
+
+        <word-relay></word-relay>
+        <word-relay></word-relay>
+        <word-relay></word-relay>
+
+        <!-- 끝말잇기를 세개를 하고싶다면 -->
+        <!-- 반복되는 부분을 컴포넌트로 만든다. -->
+    </div>
+</body>
+
+<script>
+    // vue component
+
+    Vue.component('word-relay', {  //전역 컴포넌트
+        template: `
+        <div>
+            <div>{{word}}</div>
+            <form v-on:submit="onSubmitForm">
+                <input type="text" ref="answer" v-model="value" autofocus>
+                <button type="submit">입력!</button>
+            </form>
+            <div id="result">{{result}}</div>
+        </div>
+        `,
+        // ``(백틱)은 문자열취급 줄바꿈시 편함
+        //템플릿 안은 항상 하나의 태그 여야 한다.(최상위 태그가 한개)
+        data() {
+            //컴포넌트에서는 데이터를 함수 형태로 만들어야 한다.
+            return {
+                word: '끝말잇기 시작',
+                value: '',
+                resutl: '',
+            };
+        },
+        methods: {
+            onSubmitForm(e) {
+                e.preventDefault();
+
+                if (this.word[this.word.length - 1] === this.value[0]) {
+                    this.result = '딩동댕';
+                    this.word = this.value;
+                    this.value = '';
+                    this.$refs.answer.focus();
+                } else {
+                    this.result = '땡';
+                    this.value = '';
+                    this.$refs.answer.focus();
+                }
+
+            }
+        }
+    })
+</script>
+
+<script>
+    // vue instance
+
+    const app = new Vue({
+        el: '#root',
+        data: {
+
+        },
+        methods: {
+
+        },
+    })
+</script>
+
+</html>

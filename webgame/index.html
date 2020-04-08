@@ -9,15 +9,44 @@
 </head>
 
 <body>
-vue는 데이터만 관리하면 화면은 vue가 알아서 해준다.
-vue는
-jquery 같은 것에 데이터를 변경하면 컴포넌트를 추가하고 제거해줘야 화면이 변경된다.
-바뀌는 것이 데이터이다.
+    <h3>0406</h3>
+    <ul>
+        <li> vue는 데이터만 관리하면 화면은 vue가 알아서 해준다.</li>
+        <li>vue는 jquery 같은 것에 데이터를 변경하면 컴포넌트를 추가하고 제거해줘야 화면이 변경된다.</li>
+        <li>바뀌는 것이 데이터이다.</li>
+        <li>만드는 순서는</li>
+        <ol>
+            <li>화면(html태그)</li>
+            <li>데이터(바뀌는 값)</li>
+        </ol>
+        
+    </ul>
+    <hr />
 
-만드는 순서는 
-1.화면(html태그)
-2.데이터(바뀌는 값)
+    <h3>0407</h3>
+    <ul>
+        <li>요소가 보였다 안보였다 하는 것은 v-if v-show로 처리한다.</li>
+        <li>(따라서 모든 화면을 만들어 놓고 시작한다.)</li>
+        <li>==화면이 무거워진다. (code splitting)</li>
+        <li>표기법</li>
+        <ul>
+            <li>PascalCase</li>
+            <li>camelCase<mark>(javascipt에서 kebap-case를 자동으로 변환)</mark></li>
+            <li>kebab-case<mark>(vue html에서 사용)</mark></li>
+        </ul>
+        <li>웹팩을 사용하려면 node 필요</li>
+        <li>npm 남이 만들 javascript코드</li>
+        <li>package.json - 내가 쓰는 남의 소스코드들 정리, 버전관리</li>
+        <li>npm init -> packpage.json파일 생성</li>
+        <li>npm install vue/ npm i (vue, 남의 스크립트 이름)</li>
+        <ol>
+            <li>node_modules  직접 설치하지 않은 나머지 설치됨</li>
+            <li>package-lock.json</li>
+        </ol>
+        <li>npm i webpack wepack-cli -D  개발용으로만 웹팩을 사용하겠다.</li>
+<li>webpack.config.js </li>
 
+    </ul>
 </body>
 
 </html>

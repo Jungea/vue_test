@@ -65,7 +65,12 @@
         {{ reverseMessageComputed }}<br>
         {{ reverseMessageComputed }}<br>
         {{ reverseMessageComputed }}<br>
+        <hr />
 
+        <h2>07 Watch 속성</h2>
+        {{ message2 }}<br>
+        <button @click="changeMessage">Click</button><br>
+        {{ updated }}
     </div>
 
     <script>
@@ -84,6 +89,7 @@
                 text2: 'text',
                 message: '안녕하세요',
                 message2: '안녕하세요',
+                updated: '아니요',
 
             },
             methods: {
@@ -121,15 +127,24 @@
                 },
                 changeMessage() {
                     this.message2 = "가나다라마바사"
-                }
+                },
 
             },
-            // computed는 캐싱을 제공(같은 호출이면 계산없이 제공)
             computed: {
+                //반드시 값을 리턴하는 익명함수
+                //캐싱 제공/ 대기하고 있다 message2가 변경되면 다시 계산
+                //message를 이용하는 함수
                 reverseMessageComputed() {
                     return this.message2.split('').reverse().join('');
                 }
-            }
+            },
+            watch: {
+                // 감시하는 값이 바뀌면 실행하는 함수
+                message2(newVal, oldVal) {
+                    console.log(newVal, oldVal);
+                    this.updated = '네';
+                }
+            },
 
         })
     </script>

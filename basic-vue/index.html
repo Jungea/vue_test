@@ -11,10 +11,23 @@
 <body>
     <div id="app">
         {{ person.name }} {{ person.age }}
-        <br>
+        <hr />
+
         {{ nextYear('안녕하세요') }}
         <br>
         {{ otherMethod('안녕') }}
+        <hr />
+
+        <input type="text" value="hello">
+        <input v-bind:type="type" :value="inputData">
+        <br>
+        <!-- 태그 속성에서는 {{}}를 사용하지 않고 v-bind를 사용한다. -->
+        <!-- v-bind:value="inputData" -> :value="inputData" 생략가능 -->
+        <a :href="link" target="_blank">유튜브 이동</a>
+        <a :href="moveYoutubeUser('닥터프렌즈')">닥터프렌즈</a>
+        <hr />
+
+
     </div>
 
     <script>
@@ -24,15 +37,22 @@
                 person: {
                     name: '홍길동',
                     age: 18,
-                }
+                },
+                inputData: 'hi',
+                type: 'number',
+                link: 'https://www.youtube.com/',
             },
             methods: {
+                moveYoutubeUser(user) {
+                    return this.link + user;
+                },
                 nextYear: function (greeting) {
                     return greeting + "! " + this.person.name + "는 내년에 " + (this.person.age + 1) + "살 입니다.";
                 },
                 otherMethod(a) {
                     return this.nextYear(a);
                 }
+                // function 생략가능
             },
 
 

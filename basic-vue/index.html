@@ -87,6 +87,34 @@
         <!-- :class="{ 클래스이름 : 불리언, 'bold-bold' : 불리언 }" -->
         <button @click="update">Click</button>
         <div :style="{ color: blue, fontSize: size }">lalilulelo</div>
+        <hr />
+
+        <h2>09 v-if v-show</h2>
+        <template v-if="show">
+            <!-- template 태그는 html에 표시되지 않음 -->
+            <div>1</div>
+            <div>2</div>
+            <div>3</div>
+        </template>
+        <div v-else>No</div>
+        <button @click="toggle">Toggle</button>
+        <br><br>
+
+        <template v-if="number === 1">
+            <!-- template 태그는 html에 표시되지 않음 -->
+            <div>1</div>
+            <div>2</div>
+            <div>3</div>
+        </template>
+        <div v-else-if="number === 2">Hi</div>
+        <div v-else>No</div>
+        <button @click="increasNumber">Increas</button> {{ number }}
+        <br><br>
+
+        <div v-show="show">Yes</div>
+        <br>
+        <button @click="toggle">Toggle</button>
+
 
     </div>
 
@@ -111,6 +139,8 @@
                 isBold: false,
                 blue: 'blue',
                 size: '30px',
+                show: false,
+                number: 1,
 
             },
             methods: {
@@ -153,6 +183,12 @@
                 update() {
                     this.isRed = !this.isRed;
                     this.isBold = !this.isBold;
+                },
+                toggle() {
+                    this.show = !this.show;
+                },
+                increasNumber() {
+                    this.number++;
                 }
 
             },

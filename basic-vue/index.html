@@ -41,6 +41,21 @@
             <input type="text"><br>
             <button type="submit">Submit</button>
         </form>
+        <hr />
+
+        <form v-on:submit.prevent="submit">
+            <input type="text1" :value="text1" @keyup="updateText"><br>
+            {{ text1 }}<br>
+            <button type="submit">Submit</button>
+        </form><br>
+
+        <form v-on:submit.prevent="submit">
+            <input type="text" v-model="text2"><br>
+            {{ text2 }}<br>
+            <button type="submit">Submit</button>
+        </form>
+
+
 
     </div>
 
@@ -56,6 +71,9 @@
                 type: 'number',
                 link: 'https://www.youtube.com/',
                 year: 2020,
+                text1: 'text',
+                text2: 'text',
+
 
             },
             methods: {
@@ -82,7 +100,12 @@
                 submit() {
                     alert("submitted");
                     console.log("hello");
+                },
+
+                updateText(event) {
+                    this.text1 = event.target.value;
                 }
+
 
             },
 

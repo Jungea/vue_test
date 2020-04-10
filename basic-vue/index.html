@@ -27,6 +27,20 @@
         <a :href="moveYoutubeUser('닥터프렌즈')">닥터프렌즈</a>
         <hr />
 
+        <button onclick="alert('hello 길동!')">Click Me</button>
+        <button v-on:click="alert">눌러!</button>
+        <br>
+
+        <h2>{{ year }}</h2>
+        <button v-on:click="plus">더하기</button>
+        <button v-on:click="minus">빼기</button>
+        <br><br>
+
+        <form v-on:submit.prevent="submit">
+            <!-- v-on:이벤트.옵션="함수" -->
+            <input type="text"><br>
+            <button type="submit">Submit</button>
+        </form>
 
     </div>
 
@@ -41,6 +55,8 @@
                 inputData: 'hi',
                 type: 'number',
                 link: 'https://www.youtube.com/',
+                year: 2020,
+
             },
             methods: {
                 moveYoutubeUser(user) {
@@ -51,8 +67,23 @@
                 },
                 otherMethod(a) {
                     return this.nextYear(a);
-                }
+                },
                 // function 생략가능
+
+                alert() {
+                    alert('할로 길동스!')
+                },
+                plus() {
+                    this.year++;
+                },
+                minus() {
+                    this.year--;
+                },
+                submit() {
+                    alert("submitted");
+                    console.log("hello");
+                }
+
             },
 
 

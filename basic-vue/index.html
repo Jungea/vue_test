@@ -54,8 +54,17 @@
             {{ text2 }}<br>
             <button type="submit">Submit</button>
         </form>
+        <hr />
 
+        <h2>06 Computed 속성</h2>
+        {{ message.split('').reverse().join('') }}<br>
+        {{ reverseMessageMethods }}<br>
+        {{ reverseMessageMethods() }}<br><br>
 
+        <button @click="changeMessage">Click</button><br>
+        {{ reverseMessageComputed }}<br>
+        {{ reverseMessageComputed }}<br>
+        {{ reverseMessageComputed }}<br>
 
     </div>
 
@@ -73,7 +82,8 @@
                 year: 2020,
                 text1: 'text',
                 text2: 'text',
-
+                message: '안녕하세요',
+                message2: '안녕하세요',
 
             },
             methods: {
@@ -104,11 +114,22 @@
 
                 updateText(event) {
                     this.text1 = event.target.value;
+                },
+
+                reverseMessageMethods() {
+                    return this.message.split('').reverse().join('');
+                },
+                changeMessage() {
+                    this.message2 = "가나다라마바사"
                 }
 
-
             },
-
+            // computed는 캐싱을 제공(같은 호출이면 계산없이 제공)
+            computed: {
+                reverseMessageComputed() {
+                    return this.message2.split('').reverse().join('');
+                }
+            }
 
         })
     </script>

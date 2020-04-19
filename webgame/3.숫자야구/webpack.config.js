@@ -1,6 +1,8 @@
+const path = require('path');
+
 module.exports = {
     entry: {
-        app: './main.js',
+        app: path.join(__dirname, 'main.js'),
         //app은 하나로 합쳐질 이름 (app.js == [name].js)
     },
     module: {
@@ -11,7 +13,7 @@ module.exports = {
     plugins: [],
     output: {
         filename: '[name].js',
-        path: './dist',
+        path: path.join(__dirname, 'dist'),
     },
 }
 // 노드에 모듈을 생성

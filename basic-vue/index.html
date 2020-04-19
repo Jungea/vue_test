@@ -114,6 +114,18 @@
         <div v-show="show">Yes</div>
         <br>
         <button @click="toggle">Toggle</button>
+        <hr />
+
+        <h2>10 v-for</h2>
+        <div>{{ people[0].name }} {{ people[0].age }}</div>
+        <div>{{ people[1].name }} {{ people[1].age }}</div>
+        <div>{{ people[2].name }} {{ people[2].age }}</div>
+        <br>
+
+        <div v-for="(person, index) in people" :key="people.id">
+            {{ person.name }} {{ person.age }} {{ index }}
+        </div>
+
 
 
     </div>
@@ -141,6 +153,30 @@
                 size: '30px',
                 show: false,
                 number: 1,
+
+                people: [
+                    {
+                        id: 1,
+                        name: 'a',
+                        age: 20
+                    },
+                    {
+                        id: 2,
+                        name: 'b',
+                        age: 21
+                    },
+                    {
+                        id: 3,
+                        name: 'c',
+                        age: 22
+                    },
+                    {
+                        id: 4,
+                        name: 'd',
+                        age: 23
+                    },
+
+                ],
 
             },
             methods: {
